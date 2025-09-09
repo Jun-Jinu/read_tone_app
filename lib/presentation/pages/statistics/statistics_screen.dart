@@ -58,7 +58,6 @@ class StatisticsScreen extends ConsumerWidget {
                   '통계',
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
               ],

@@ -642,12 +642,9 @@ class _ReadingSessionScreenState extends ConsumerState<ReadingSessionScreen>
       child: Row(
         children: [
           IconButton(
-            icon: const Icon(Icons.arrow_back_rounded),
+            icon: const Icon(Icons.arrow_back_ios_new),
             onPressed: () => _onWillPop(),
-            style: IconButton.styleFrom(
-              backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-              padding: const EdgeInsets.all(8),
-            ),
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
           ),
           const SizedBox(width: 12),
           Expanded(

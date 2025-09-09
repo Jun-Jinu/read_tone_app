@@ -66,25 +66,18 @@ class _LibraryAllBooksScreenState extends ConsumerState<LibraryAllBooksScreen> {
       padding: const EdgeInsets.fromLTRB(24, 16, 24, 24),
       child: Row(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primaryContainer,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: IconButton(
-              icon: const Icon(Icons.arrow_back_rounded),
-              onPressed: () => Navigator.pop(context),
-              color: Theme.of(context).colorScheme.onPrimaryContainer,
-            ),
+          IconButton(
+            icon: const Icon(Icons.arrow_back_ios_new),
+            onPressed: () => Navigator.pop(context),
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
           ),
           const SizedBox(width: 16),
           Expanded(
             child: Text(
               '모든 책',
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).colorScheme.primary,
-              ),
+              style: Theme.of(
+                context,
+              ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
           ),
         ],

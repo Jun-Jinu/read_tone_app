@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../providers/book_provider.dart';
-import '../../widgets/common/index.dart';
 import 'package:read_tone_app/domain/entities/book.dart';
 
 class LibraryScreen extends ConsumerWidget {
@@ -45,7 +44,6 @@ class LibraryScreen extends ConsumerWidget {
                   '나의 서재',
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
               ],
@@ -198,18 +196,14 @@ class LibraryScreen extends ConsumerWidget {
                 '모든 책',
                 plannedBooks.length + completedBooks.length,
                 false,
+                onTap: () => context.push('/library/all'),
               ),
             ),
             const SizedBox(height: 12),
             _buildCombinedBookGrid(context, plannedBooks, completedBooks),
             const SizedBox(height: 20),
           ],
-
-          // 모든 책 보기 버튼
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: _buildViewAllButton(context),
-          ),
+          const SizedBox(height: 40),
         ],
       ),
     );
@@ -259,8 +253,9 @@ class LibraryScreen extends ConsumerWidget {
     BuildContext context,
     String title,
     int count,
-    bool isHighlighted,
-  ) {
+    bool isHighlighted, {
+    VoidCallback? onTap,
+  }) {
     return Row(
       children: [
         if (isHighlighted) ...[
@@ -314,6 +309,19 @@ class LibraryScreen extends ConsumerWidget {
             ),
           ),
         ),
+        const Spacer(),
+        if (!isHighlighted)
+          InkWell(
+            onTap: onTap,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Icon(
+                Icons.arrow_forward_ios,
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+                size: 20,
+              ),
+            ),
+          ),
       ],
     );
   }
@@ -591,40 +599,5 @@ class LibraryScreen extends ConsumerWidget {
     }
   }
 
-  Widget _buildViewAllButton(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Theme.of(context).colorScheme.primary,
-            Theme.of(context).colorScheme.secondary,
-          ],
-        ),
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: ElevatedButton.icon(
-        icon: const Icon(Icons.library_books_rounded),
-        label: const Text('전체 서재 보기'),
-        onPressed: () {
-          context.push('/library/all');
-        },
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.transparent,
-          shadowColor: Colors.transparent,
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-        ),
-      ),
-    );
-  }
+  // _buildViewAllButton 제거됨: 헤더의 > 아이콘으로 이동 처리
 }

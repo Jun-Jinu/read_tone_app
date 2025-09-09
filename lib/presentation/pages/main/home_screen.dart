@@ -78,10 +78,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         children: [
           Text(
             '홈',
-            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: Theme.of(context).colorScheme.primary,
-            ),
+            style: Theme.of(
+              context,
+            ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 12),
           _buildTopSearchBar(context),
@@ -116,7 +115,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               children: [
                 Icon(
                   Icons.search_rounded,
-                  color: Theme.of(context).colorScheme.primary,
+                  color: Theme.of(context).colorScheme.onSurface,
                   size: 24,
                 ),
                 const SizedBox(width: 12),
@@ -922,12 +921,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: addMemo
-                          ? Colors.blue
+                          ? AppColors.info
                           : Colors.grey.withOpacity(0.3),
                       width: addMemo ? 2 : 1,
                     ),
                     borderRadius: BorderRadius.circular(12),
-                    color: addMemo ? Colors.blue.withOpacity(0.05) : null,
+                    color: addMemo ? AppColors.info.withOpacity(0.05) : null,
                   ),
                   child: CheckboxListTile(
                     value: addMemo,
@@ -940,7 +939,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       children: [
                         Icon(
                           Icons.edit_note_rounded,
-                          color: addMemo ? Colors.blue : Colors.grey[600],
+                          color: addMemo ? AppColors.info : Colors.grey[600],
                           size: 20,
                         ),
                         const SizedBox(width: 8),
@@ -948,7 +947,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           '나의 메모 추가',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
-                            color: addMemo ? Colors.blue : null,
+                            color: addMemo ? AppColors.info : null,
                           ),
                         ),
                       ],
@@ -1344,10 +1343,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         onPressed: () {
                           _showQuickBookmarkDialog(context, ref, book);
                         },
-                        icon: const Icon(Icons.bookmark_add_outlined),
+                        icon: Icon(
+                          Icons.bookmark_add_outlined,
+                          color: AppColors.primary,
+                        ),
                         label: const Text('책갈피'),
                         style: OutlinedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(vertical: 12),
+                          foregroundColor: AppColors.primary,
+                          side: const BorderSide(
+                            color: AppColors.primary,
+                            width: 1.5,
+                          ),
+                          backgroundColor: AppColors.primary.withOpacity(0.06),
+                          overlayColor: AppColors.primary.withOpacity(0.12),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
@@ -1528,12 +1537,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         Container(
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            color: Colors.blue.withOpacity(0.1),
+                            color: AppColors.info.withOpacity(0.1),
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: const Icon(
                             Icons.bookmark_add,
-                            color: Colors.blue,
+                            color: AppColors.info,
                             size: 22,
                           ),
                         ),
@@ -1567,12 +1576,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: usePage
-                              ? Colors.blue
+                              ? AppColors.info
                               : Colors.grey.withOpacity(0.3),
                           width: usePage ? 2 : 1,
                         ),
                         borderRadius: BorderRadius.circular(12),
-                        color: usePage ? Colors.blue.withOpacity(0.04) : null,
+                        color: usePage
+                            ? AppColors.info.withOpacity(0.04)
+                            : null,
                       ),
                       child: CheckboxListTile(
                         value: usePage,
@@ -1585,7 +1596,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           children: [
                             Icon(
                               Icons.book,
-                              color: usePage ? Colors.blue : Colors.grey[600],
+                              color: usePage
+                                  ? AppColors.info
+                                  : Colors.grey[600],
                               size: 20,
                             ),
                             const SizedBox(width: 8),
@@ -1593,7 +1606,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               '페이지 번호 입력 사용',
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
-                                color: usePage ? Colors.blue : null,
+                                color: usePage ? AppColors.info : null,
                               ),
                             ),
                           ],
@@ -1623,7 +1636,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         hintText: '페이지 번호를 입력하세요',
                         prefixIcon: const Icon(
                           Icons.menu_book,
-                          color: Colors.blue,
+                          color: AppColors.info,
                         ),
                         validator: (value) {
                           if (!usePage) return null;
@@ -1650,7 +1663,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       hintText: '인상 깊은 구절을 입력하세요',
                       prefixIcon: const Icon(
                         Icons.format_quote,
-                        color: Colors.blue,
+                        color: AppColors.info,
                       ),
                     ),
 
@@ -1664,7 +1677,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       hintText: '생각이나 느낌을 입력하세요',
                       prefixIcon: const Icon(
                         Icons.edit_note,
-                        color: Colors.blue,
+                        color: AppColors.info,
                       ),
                       validator: (value) {
                         if (value == null || value.trim().isEmpty) {
@@ -1717,7 +1730,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                               Text('책갈피가 추가되었습니다'),
                                             ],
                                           ),
-                                          backgroundColor: Colors.blue,
+                                          backgroundColor: AppColors.info,
                                           behavior: SnackBarBehavior.floating,
                                           shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(
@@ -1760,8 +1773,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               },
                               child: const Text('추가하기'),
                               gradientColors: const [
-                                Colors.blue,
-                                Colors.lightBlue,
+                                AppColors.info,
+                                AppColors.info,
                               ],
                             ),
                           ),
@@ -1808,22 +1821,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget _buildBottomAddButton(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
       decoration: BoxDecoration(
         gradient: LinearGradient(
+          colors: [
+            Theme.of(context).colorScheme.primary.withOpacity(0.9),
+            Theme.of(context).colorScheme.secondary.withOpacity(0.9),
+          ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [
-            Theme.of(context).colorScheme.primary,
-            Theme.of(context).colorScheme.secondary,
-          ],
         ),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
+            color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+            blurRadius: 16,
+            offset: const Offset(0, 6),
+            spreadRadius: 2,
           ),
         ],
       ),
@@ -1831,35 +1845,45 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         color: Colors.transparent,
         child: InkWell(
           onTap: () => context.push('/search'),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(24),
           splashColor: Colors.white.withOpacity(0.2),
           highlightColor: Colors.white.withOpacity(0.1),
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 2),
+            padding: const EdgeInsets.symmetric(vertical: 4),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: Colors.white.withOpacity(0.3),
+                      width: 1,
+                    ),
                   ),
                   child: const Icon(
                     Icons.add_rounded,
                     color: Colors.white,
-                    size: 24,
+                    size: 26,
                   ),
                 ),
-                const SizedBox(width: 16),
+                const SizedBox(width: 20),
                 Expanded(
                   child: Text(
                     '새로운 책 추가하기',
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w700,
                       color: Colors.white,
+                      letterSpacing: 0.3,
                     ),
                   ),
+                ),
+                const Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  color: Colors.white,
+                  size: 18,
                 ),
               ],
             ),

@@ -116,8 +116,10 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
                     Image.asset('assets/images/logo/readtone.png'),
                     const SizedBox(height: 8),
                     Text(
-                      'Read in your tone.',
+                      // 'Read in your tone.',
                       // '당신의 리듬으로 읽고, 기록하세요.',
+                      '나만의 톤으로 읽다.',
+
                       style: Theme.of(
                         context,
                       ).textTheme.bodyLarge?.copyWith(color: Colors.grey[600]),

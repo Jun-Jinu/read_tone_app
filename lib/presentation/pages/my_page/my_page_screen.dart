@@ -74,7 +74,6 @@ class MyPageScreen extends ConsumerWidget {
                   '마이페이지',
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
               ],
@@ -82,13 +81,13 @@ class MyPageScreen extends ConsumerWidget {
           ),
           Container(
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primaryContainer,
+              color: Theme.of(context).colorScheme.surface,
               borderRadius: BorderRadius.circular(12),
             ),
             child: IconButton(
               icon: Icon(
                 Icons.settings_rounded,
-                color: Theme.of(context).colorScheme.primary,
+                color: Theme.of(context).colorScheme.onSurface,
                 size: 20,
               ),
               onPressed: () {
@@ -133,13 +132,13 @@ class MyPageScreen extends ConsumerWidget {
                 width: 80,
                 height: 80,
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primaryContainer,
+                  color: Theme.of(context).colorScheme.surface,
                   borderRadius: BorderRadius.circular(40),
                 ),
                 child: Icon(
                   isGuest ? Icons.person_outline : Icons.person,
                   size: 40,
-                  color: Theme.of(context).colorScheme.primary,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
               const SizedBox(width: 20),
@@ -151,6 +150,7 @@ class MyPageScreen extends ConsumerWidget {
                       isGuest ? '게스트 사용자' : currentUser?.displayName ?? '사용자',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.bold,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -169,19 +169,6 @@ class MyPageScreen extends ConsumerWidget {
                           ref.read(authProvider.notifier).logout();
                           context.go('/login');
                         },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Theme.of(
-                            context,
-                          ).colorScheme.primary,
-                          foregroundColor: Colors.white,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 8,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
                         child: const Text('로그인하기'),
                       ),
                     ],
@@ -201,8 +188,16 @@ class MyPageScreen extends ConsumerWidget {
                     onPressed: () {
                       context.push('/profile-edit');
                     },
-                    icon: const Icon(Icons.edit_outlined),
-                    label: const Text('프로필 편집'),
+                    icon: Icon(
+                      Icons.edit_outlined,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
+                    label: Text(
+                      '프로필 편집',
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
+                    ),
                     style: OutlinedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
@@ -245,8 +240,8 @@ class MyPageScreen extends ConsumerWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Theme.of(context).colorScheme.primary.withOpacity(0.1),
-            Theme.of(context).colorScheme.secondary.withOpacity(0.1),
+            Theme.of(context).colorScheme.primary.withOpacity(0.05),
+            Theme.of(context).colorScheme.surface.withOpacity(0.1),
           ],
         ),
         borderRadius: BorderRadius.circular(20),
@@ -262,12 +257,12 @@ class MyPageScreen extends ConsumerWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
+                  color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Icon(
                   Icons.bar_chart_rounded,
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.primary,
                   size: 24,
                 ),
               ),
@@ -280,7 +275,7 @@ class MyPageScreen extends ConsumerWidget {
                       '나의 독서 통계',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.primary,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -303,10 +298,15 @@ class MyPageScreen extends ConsumerWidget {
                   onPressed: () {
                     context.go('/statistics');
                   },
-                  icon: const Icon(Icons.analytics_outlined),
-                  label: const Text('통계 보러가기'),
+                  icon: Icon(Icons.analytics_outlined),
+                  label: Text(
+                    '통계 보러가기',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).colorScheme.primary,
+                    elevation: 0,
+                    shadowColor: Colors.transparent,
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
@@ -318,7 +318,7 @@ class MyPageScreen extends ConsumerWidget {
               // const SizedBox(width: 12),
               // Container(
               //   decoration: BoxDecoration(
-              //     color: Theme.of(context).colorScheme.primaryContainer,
+              //     color: Theme.of(context).colorScheme.surface,
               //     borderRadius: BorderRadius.circular(12),
               //   ),
               //   child: IconButton(
@@ -327,7 +327,7 @@ class MyPageScreen extends ConsumerWidget {
               //     },
               //     icon: Icon(
               //       Icons.share_rounded,
-              //       color: Theme.of(context).colorScheme.primary,
+              //       color: Theme.of(context).colorScheme.onSurface,
               //     ),
               //     tooltip: '통계 공유하기',
               //   ),
@@ -355,7 +355,7 @@ class MyPageScreen extends ConsumerWidget {
             children: [
               Icon(
                 Icons.workspace_premium_rounded,
-                color: Theme.of(context).colorScheme.primary,
+                color: Theme.of(context).colorScheme.onSurface,
                 size: 24,
               ),
               const SizedBox(width: 8),
@@ -363,7 +363,7 @@ class MyPageScreen extends ConsumerWidget {
                 '나의 독서 레벨',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.primary,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
               const Spacer(),
@@ -375,7 +375,7 @@ class MyPageScreen extends ConsumerWidget {
                     vertical: 6,
                   ),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primaryContainer,
+                    color: Theme.of(context).colorScheme.surface,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Row(
@@ -383,18 +383,18 @@ class MyPageScreen extends ConsumerWidget {
                     children: [
                       Icon(
                         Icons.info_outline,
-                        size: 14,
-                        color: Theme.of(context).colorScheme.primary,
+                        size: 18,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
-                      const SizedBox(width: 4),
-                      Text(
-                        '레벨 정보',
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                      ),
+                      // const SizedBox(width: 4),
+                      // Text(
+                      //   '레벨 정보',
+                      //   style: TextStyle(
+                      //     fontSize: 12,
+                      //     fontWeight: FontWeight.w500,
+                      //     color: Theme.of(context).colorScheme.onSurface,
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
@@ -443,15 +443,16 @@ class MyPageScreen extends ConsumerWidget {
             children: [
               Icon(
                 Icons.card_giftcard_rounded,
-                color: Theme.of(context).colorScheme.primary,
+                color: Theme.of(context).colorScheme.onSurface,
                 size: 20,
               ),
               const SizedBox(width: 8),
               Text(
                 '현재 레벨 혜택',
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.onSurface,
+                ),
               ),
             ],
           ),
@@ -467,7 +468,7 @@ class MyPageScreen extends ConsumerWidget {
                         width: 6,
                         height: 6,
                         decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary,
+                          color: Theme.of(context).colorScheme.onSurface,
                           shape: BoxShape.circle,
                         ),
                       ),
@@ -492,7 +493,7 @@ class MyPageScreen extends ConsumerWidget {
             Text(
               '그 외 ${benefits.length - 3}개 혜택',
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: Theme.of(context).colorScheme.primary,
+                color: Theme.of(context).colorScheme.onSurface,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -558,19 +559,23 @@ class MyPageScreen extends ConsumerWidget {
                 children: [
                   Icon(
                     Icons.workspace_premium_rounded,
-                    color: Theme.of(context).colorScheme.primary,
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
                   const SizedBox(width: 8),
                   Text(
                     '독서 레벨 시스템',
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
                   const Spacer(),
                   IconButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(Icons.close),
+                    icon: Icon(
+                      Icons.close,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
                   ),
                 ],
               ),
@@ -603,7 +608,7 @@ class MyPageScreen extends ConsumerWidget {
                             ),
                             child: Icon(
                               levelData['icon'] as IconData,
-                              color: levelData['textColor'] as Color,
+                              color: Theme.of(context).colorScheme.onSurface,
                               size: 24,
                             ),
                           ),
@@ -619,7 +624,9 @@ class MyPageScreen extends ConsumerWidget {
                                       style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold,
-                                        color: levelData['textColor'] as Color,
+                                        color: Theme.of(
+                                          context,
+                                        ).colorScheme.onSurface,
                                       ),
                                     ),
                                     const SizedBox(width: 8),
@@ -628,7 +635,9 @@ class MyPageScreen extends ConsumerWidget {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
-                                        color: levelData['textColor'] as Color,
+                                        color: Theme.of(
+                                          context,
+                                        ).colorScheme.onSurface,
                                       ),
                                     ),
                                   ],
@@ -638,8 +647,9 @@ class MyPageScreen extends ConsumerWidget {
                                   '${levelData['minBooks']}권 ${level < 7 ? '~ ${levelData['maxBooks']}권' : '이상'}',
                                   style: TextStyle(
                                     fontSize: 12,
-                                    color: (levelData['textColor'] as Color)
-                                        .withOpacity(0.8),
+                                    color: Theme.of(
+                                      context,
+                                    ).colorScheme.onSurface.withOpacity(0.8),
                                   ),
                                 ),
                               ],
@@ -648,7 +658,7 @@ class MyPageScreen extends ConsumerWidget {
                           if (isSpecial)
                             Icon(
                               Icons.auto_awesome,
-                              color: levelData['textColor'] as Color,
+                              color: Theme.of(context).colorScheme.onSurface,
                               size: 20,
                             ),
                         ],

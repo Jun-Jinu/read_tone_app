@@ -28,8 +28,8 @@ class MainLayout extends ConsumerWidget {
             labelTextStyle: WidgetStateProperty.resolveWith((states) {
               return TextStyle(
                 color: states.contains(WidgetState.selected)
-                    ? colorScheme.primary
-                    : colorScheme.onSurface.withValues(alpha: 0.5),
+                    ? colorScheme.onSurface
+                    : colorScheme.onSurface.withValues(alpha: 0.4),
               );
             }),
           ),
@@ -55,9 +55,9 @@ class MainLayout extends ConsumerWidget {
       return NavigationDestination(
         icon: Icon(
           item.icon,
-          color: colorScheme.onSurface.withValues(alpha: 0.5),
+          color: colorScheme.onSurface.withValues(alpha: 0.4),
         ),
-        selectedIcon: Icon(item.icon, color: colorScheme.primary),
+        selectedIcon: Icon(item.icon, color: colorScheme.onSurface),
         label: item.label,
       );
     }).toList();

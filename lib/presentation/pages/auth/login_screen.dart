@@ -290,16 +290,16 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   children: [
                     Image.asset('assets/images/logo/readtone.png'),
                     // const SizedBox(height: 8),
-                    Text(
-                      '나만의 톤으로 읽다.',
-                      style: AppTextStyles.bodyMedium.copyWith(
-                        color: AppColors.textSecondary,
-                      ),
-                    ),
+                    // Text(
+                    //   '나만의 톤으로 읽다.',
+                    //   style: AppTextStyles.bodyMedium.copyWith(
+                    //     color: AppColors.textSecondary,
+                    //   ),
+                    // ),
                   ],
                 ),
 
-                const SizedBox(height: 30),
+                const SizedBox(height: 40),
 
                 // 로그인 폼
                 Column(
