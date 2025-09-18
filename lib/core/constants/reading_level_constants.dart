@@ -10,11 +10,18 @@ class ReadingLevelConstants {
       'title': '입문 독서가',
       'subtitle': '첫걸음을 뗀 독서가',
       'description': '독서의 즐거움을 발견해가는 시작 단계입니다',
-      'color': Color(0xFFFFF8E1), // Soft cream
-      'accentColor': Color(0xFFFFE0B2),
-      'textColor': Color(0xFF6D4C41),
-      'icon': Icons.bookmark_border_outlined,
-      'gradient': [Color(0xFFFFF8E1), Color(0xFFFFE0B2)],
+
+      'color': Color(0xFFE8F5E9), // Mint pastel
+      'accentColor': Color(0xFFC8E6C9),
+
+      'textColor': Color(0xFF2E7D32),
+      'icon': Icons.bookmark_outlined,
+      'gradient': [Color(0xFFE8F5E9), Color(0xFFC8E6C9)],
+      // 'color': Color(0xFFFFF8E1), // Soft cream
+      // 'accentColor': Color(0xFFFFE0B2),
+      // 'textColor': Color(0xFF6D4C41),
+      // 'icon': Icons.bookmark_border_outlined,
+      // 'gradient': [Color(0xFFFFF8E1), Color(0xFFFFE0B2)],
     },
     2: {
       'minBooks': 5,
@@ -139,19 +146,19 @@ class ReadingLevelConstants {
 
     switch (newLevel) {
       case 2:
-        return '🌱 축하합니다! "$title" 단계에 도달했어요!\n독서 습관이 자리잡고 있네요!';
+        return '축하합니다! "$title" 단계에 도달했어요!\n독서 습관이 자리잡고 있네요!';
       case 3:
-        return '🌊 멋져요! "$title" 단계입니다!\n꾸준한 독서로 안정적인 리듬을 찾았어요!';
+        return '멋져요! "$title" 단계입니다!\n꾸준한 독서로 안정적인 리듬을 찾았어요!';
       case 4:
-        return '🔥 대단해요! "$title" 단계에 진입했어요!\n독서에 완전히 몰입하고 계시네요!';
+        return '대단해요! "$title" 단계에 진입했어요!\n독서에 완전히 몰입하고 계시네요!';
       case 5:
-        return '🍷 훌륭합니다! "$title" 단계입니다!\n지식의 깊이를 탐구하는 진정한 독서가예요!';
+        return '훌륭합니다! "$title" 단계입니다!\n지식의 깊이를 탐구하는 진정한 독서가예요!';
       case 6:
-        return '🌌 놀라워요! "$title" 단계에 도달했어요!\n성숙한 지적 안목을 갖추셨네요!';
+        return '놀라워요! "$title" 단계에 도달했어요!\n성숙한 지적 안목을 갖추셨네요!';
       case 7:
-        return '👑 축하합니다! "$title"가 되셨어요!\n독서의 모든 영역을 마스터한 진정한 달인입니다!';
+        return '축하합니다! "$title"가 되셨어요!\n독서의 모든 영역을 마스터한 진정한 달인입니다!';
       default:
-        return '📚 축하합니다! "$title" 단계에 도달했어요!';
+        return '축하합니다! "$title" 단계에 도달했어요!';
     }
   }
 
